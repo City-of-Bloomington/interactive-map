@@ -9,21 +9,21 @@ var mapbox = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png',
 osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
 }),
-parks = L.tileLayer.wms('https://geoserver.bloomington.in.gov/geoserver/wms', {
+parks = L.tileLayer.wms('https://bloomington.in.gov/geoserver/wms', {
     layers: 'publicgis:Parks',
     format: 'image/png',
         transparent: true,
         version: '1.1.1',
         opacity: 0.5
 }),
-trails = L.tileLayer.wms('https://geoserver.bloomington.in.gov/geoserver/wms', {
-    layers: 'publicgis:TrailsAndPaths',
+trails = L.tileLayer.wms('https://bloomington.in.gov/geoserver/wms', {
+    layers: 'publicgis:Trails and Paths',
     format: 'image/png',
         transparent: true,
         version: '1.1.1',
         opacity: 1
 }),
-schools = L.tileLayer.wms('https://geoserver.bloomington.in.gov/geoserver/wms', {
+schools = L.tileLayer.wms('https://bloomington.in.gov/geoserver/wms', {
     layers: 'publicgis:Schools',
     format: 'image/png',
         transparent: true,
