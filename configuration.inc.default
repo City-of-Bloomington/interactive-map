@@ -1,0 +1,3 @@
+# Assets location
+#define('ASSETS_HOME', '/path/to/common/assets');
+#define('ASSETS_URI', '/path/to/common/assets');
