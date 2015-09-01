@@ -1,3 +1,13 @@
+<?php
+define('APPLICATION_HOME', __DIR__);
+define('BASE_URL', 'http://localhost/ivy');
+define('BASE_URI', '/ivy');
+
 # Assets location
-#define('ASSETS_HOME', '/path/to/common/assets');
-#define('ASSETS_URI', '/path/to/common/assets');
+define('ASSETS_HOME', '/srv/sites/assets');
+define('ASSETS_URI', 'http://localhost/assets');
+
+/**
+ * Javascript APIs
+ */
+define('LEAFLET', BASE_URI.'/js/vendor/Leaflet');

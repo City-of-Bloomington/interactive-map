@@ -1,0 +1,16 @@
+configuration.inc
+site_config.inc
+data/sessions/*
+data/templates/*
+data/blocks/*
+build
+screen.css
+screen.css.map
+node_modules
+gulpfile.js
+*.mo
+.sass-cache
+.build
+.ftppass
+package.json
+

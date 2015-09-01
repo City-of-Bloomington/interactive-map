@@ -1,12 +1,12 @@
-<?php include('configuration.inc'); ?>
+<?php include('../configuration.inc'); ?>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="<?= LEAFLET; ?>/dist/leaflet.css" />
     <link rel="stylesheet" href="<?= ASSETS_URI?>/css/screen.css" />
     <title></title>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="<?= LEAFLET; ?>/build/leaflet.js"></script>
     <style type="text/css">
         #map { width:100%; height:800px; }
     </style>
