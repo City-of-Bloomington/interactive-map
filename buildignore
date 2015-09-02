@@ -1,0 +1,7 @@
+/buildignore
+/build.sh
+/build
+.git/
+.git*
+configuration.inc
+site_config.inc
