@@ -13,7 +13,7 @@ var mapbox = L.tileLayer('https://api.mapbox.com/v4/' + IVY.mapbox_style + '/{z}
             opacity: 0.5
     }),
     trails = L.tileLayer.wms('https://bloomington.in.gov/geoserver/wms', {
-        layers: 'publicgis:Trails and Paths',
+        layers: 'publicgis:TrailsAndPaths',
         format: 'image/png',
             transparent: true,
             version: '1.1.1',
