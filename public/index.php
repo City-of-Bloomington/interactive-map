@@ -25,6 +25,12 @@
     <div id="map"></div>
 </body>
 
+<script type="text/javascript">
+    var IVY = {
+        mapbox_api_key: '<?= MAPBOX_API_KEY; ?>',
+        mapbox_style:   '<?= MAPBOX_STYLE; ?>'
+    };
+</script>
 <script type="text/javascript" src="<?= BASE_URI; ?>/js/map.js"></script>
 <script type="text/javascript" src="<?= BASE_URI; ?>/js/menuLauncher.js"></script>
 </html>

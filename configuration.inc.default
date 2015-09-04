@@ -11,3 +11,6 @@ define('ASSETS_URI', 'http://localhost/assets');
  * Javascript APIs
  */
 define('LEAFLET', BASE_URI.'/js/vendor/Leaflet');
+
+define('MAPBOX_API_KEY', 'pk.ey');
+define('MAPBOX_STYLE', 'mapbox.streets');
