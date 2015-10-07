@@ -16,6 +16,8 @@ define('LEAFLET', BASE_URI.'/js/vendor/leaflet-0.7.5');
 define('MAPBOX_API_KEY', 'pk.ey');
 define('MAPBOX_STYLE', 'mapbox.streets');
 
+define('GEOSERVER', 'https://bloomington.in.gov/geoserver');
+
 /**
  * Used when there's an error on the site.  The Framework will
  * print out a nice error message, encouraging users to report any problems
@@ -85,3 +87,11 @@ $DIRECTORY_CONFIG = [
 
 define('DATE_FORMAT', 'n/j/Y H:i:s');
 define('LOCALE', 'en_US');
+
+/**
+ * Default coordinates for map center
+ * This should probably be the center of your city
+ * If you can, it's best to adjust these values in your php.ini
+ */
+define('DEFAULT_LATITUDE', ini_get('date.default_latitude'));
+define('DEFAULT_LONGITUDE',ini_get('date.default_longitude'));

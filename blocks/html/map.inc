@@ -8,9 +8,13 @@ $this->template->addToAsset('scripts', BASE_URI.'/js/map.js');
 ?>
 <div id="map"></div>
 <script type="text/javascript">
+    // Transfer some constants from PHP to JavaScript.
+    // These should be set in the site config.
     var IVY = {
-        mapbox_api_key: '<?= MAPBOX_API_KEY; ?>',
-        mapbox_style:   '<?= MAPBOX_STYLE; ?>'
+        mapbox_api_key:    '<?= MAPBOX_API_KEY; ?>',
+        mapbox_style:      '<?= MAPBOX_STYLE; ?>',
+        geoserver:         '<?= GEOSERVER; ?>',
+        default_latitude:  '<?= DEFAULT_LATITUDE; ?>',
+        default_longitude: '<?= DEFAULT_LONGITUDE; ?>'
     };
 </script>
-
