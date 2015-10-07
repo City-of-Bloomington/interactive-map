@@ -1,36 +1,40 @@
-<?php include('../configuration.inc'); ?>
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-    <link rel="stylesheet" href="<?= LEAFLET; ?>/leaflet.css" />
-    <link rel="stylesheet" href="<?= ASSETS_URI; ?>/css/screen.css" />
-    <link rel="stylesheet" href="<?= BASE_URI; ?>/css/menu.css" />
-    <title></title>
-    <script src="<?= LEAFLET; ?>/leaflet.js"></script>
-    <style type="text/css">
-        #map { width:100%; height:800px; }
-    </style>
-</head>
-<body>
-    <header class="cob-siteHeader">
-        <div class="cob-siteHeader-container">
-            <?php
-                include(ASSETS_HOME.'/html/cob-siteHeader-menu.html');
-                include(ASSETS_HOME.'/html/cob-siteHeader-logo.html');
-            ?>
-        </div>
-    </header>
+<?php
+/**
+ * @copyright 2012-2013 City of Bloomington, Indiana
+ * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
+ * @author Cliff Ingham <inghamn@bloomington.in.gov>
+ */
+include '../configuration.inc';
+use Blossom\Classes\Template;
+use Blossom\Classes\Block;
 
-    <div id="map"></div>
-</body>
+// Check for routes
+if (preg_match('|'.BASE_URI.'(/([a-zA-Z0-9]+))?(/([a-zA-Z0-9]+))?|',$_SERVER['REQUEST_URI'],$matches)) {
+	$resource = isset($matches[2]) ? $matches[2] : 'index';
+	$action   = isset($matches[4]) ? $matches[4] : 'index';
+}
 
-<script type="text/javascript">
-    var IVY = {
-        mapbox_api_key: '<?= MAPBOX_API_KEY; ?>',
-        mapbox_style:   '<?= MAPBOX_STYLE; ?>'
-    };
-</script>
-<script type="text/javascript" src="<?= BASE_URI; ?>/js/map.js"></script>
-<script type="text/javascript" src="<?= BASE_URI; ?>/js/menuLauncher.js"></script>
-</html>
+// Create the default Template
+$template = !empty($_REQUEST['format'])
+	? new Template('default',$_REQUEST['format'])
+	: new Template('default');
+
+// Execute the Controller::action()
+if (isset($resource) && isset($action) && $ZEND_ACL->hasResource($resource)) {
+	$USER_ROLE = isset($_SESSION['USER']) ? $_SESSION['USER']->getRole() : 'Anonymous';
+	if ($ZEND_ACL->isAllowed($USER_ROLE, $resource, $action)) {
+		$controller = 'Application\Controllers\\'.ucfirst($resource).'Controller';
+		$c = new $controller($template);
+		$c->$action();
+	}
+	else {
+		header('HTTP/1.1 403 Forbidden', true, 403);
+		$_SESSION['errorMessages'][] = new \Exception('noAccessAllowed');
+	}
+}
+else {
+	header('HTTP/1.1 404 Not Found', true, 404);
+	$template->blocks[] = new Block('404.inc');
+}
+
+echo $template->render();

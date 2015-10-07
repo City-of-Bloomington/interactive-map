@@ -1,16 +1,17 @@
 configuration.inc
 site_config.inc
 data/sessions/*
-data/templates/*
-data/blocks/*
+tests/configuration.inc
 build
-screen.css
-screen.css.map
-node_modules
-gulpfile.js
+dist
 *.mo
+public/css/screen.css
+public/css/screen.css.map
 .sass-cache
-.build
-.ftppass
+node_modules
 package.json
+gulpfile.js
+.ftppass
+vendor
+composer.lock
 
