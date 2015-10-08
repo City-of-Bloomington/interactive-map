@@ -3,8 +3,9 @@
  * @copyright 2015 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
+ * @param string $this->map
  */
-$this->template->addToAsset('scripts', BASE_URI.'/js/map.js');
+$this->template->addToAsset('scripts', BASE_URI."/js/map?map={$this->map}");
 ?>
 <div id="map"></div>
 <script type="text/javascript">

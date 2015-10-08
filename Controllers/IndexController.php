@@ -13,6 +13,7 @@ class IndexController extends Controller
 {
 	public function index()
 	{
-        $this->template->blocks[] = new Block('map.inc');
+        $map = !empty($_REQUEST['map']) ? $_REQUEST['map'] : 'default';
+        $this->template->blocks[] = new Block('map.inc', ['map'=>$map]);
 	}
 }

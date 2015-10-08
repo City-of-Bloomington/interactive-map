@@ -22,15 +22,16 @@ $ZEND_ACL->addResource(new Resource('people'));
 $ZEND_ACL->addResource(new Resource('users'));
 $ZEND_ACL->addResource(new Resource('login'));
 
+$ZEND_ACL->addResource(new Resource('js'));
+
 /**
  * Assign permissions to the resources
  */
 $ZEND_ACL->allow(null,'login');
 
 // Permissions for unauthenticated browsing
-$ZEND_ACL->allow(null,
-				['index'],
-				['index']);
+$ZEND_ACL->allow(null,['index'],['index']);
+$ZEND_ACL->allow(null,['js'],['map']);
 
 // Allow Staff to do stuff
 $ZEND_ACL->allow('Staff', ['people'], ['index','view']);
