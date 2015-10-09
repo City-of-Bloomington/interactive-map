@@ -62,4 +62,17 @@ class MapsController extends Controller
 
         $this->template->blocks[] = new Block('maps/updateForm.inc', ['map'=>$map]);
     }
+
+    public function delete()
+    {
+        if (!empty($_REQUEST['map_id'])) {
+            try {
+                $map = new Map($_REQUEST['map_id']);
+                $map->delete();
+            }
+            catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
+        }
+        header('Location: '.BASE_URL.'/maps');
+        exit();
+    }
 }

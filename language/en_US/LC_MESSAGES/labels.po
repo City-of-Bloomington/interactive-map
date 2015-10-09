@@ -114,3 +114,20 @@ msgstr "Delete Account"
 
 msgid "user_info"
 msgstr "Account Info"
+
+msgid "map"
+msgid_plural "maps"
+msgstr[0] "Map"
+msgstr[1] "Maps"
+
+msgid "map_add"
+msgstr "New Map"
+
+msgid "map_edit"
+msgstr "Edit Map"
+
+msgid "map_delete"
+msgstr "Delete Map"
+
+msgid "script"
+msgstr "Script"

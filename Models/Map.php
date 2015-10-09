@@ -57,6 +57,11 @@ class Map extends ActiveRecord
 	}
 
 	public function save() { parent::save(); }
+	public function delete()
+	{
+        $this->deleteFile();
+        parent::delete();
+	}
 
 	//----------------------------------------------------------------
 	// Generic Getters & Setters
@@ -87,6 +92,12 @@ class Map extends ActiveRecord
                 throw new \Exception('media/badServerPermissions');
             }
         }
+	}
+
+	public function deleteFile()
+	{
+        $script = SITE_HOME."/maps/{$this->getInternalFilename()}.js";
+        if (is_file($script)) { unlink($script); }
 	}
 
 	/**

@@ -36,10 +36,14 @@ use Blossom\Classes\View;
             $editButton = $userCanEdit
                 ? $helper->buttonLink(BASE_URI."/maps/update?map_id=$id", $this->_('map_edit'), 'edit')
                 : '';
+            $deleteButton = Person::isAllowed('maps', 'delete')
+                ? $helper->buttonLink(BASE_URI."/maps/delete?map_id=$id", $this->_('map_delete'), 'delete')
+                : '';
 
             echo "
             <tr><td>$editButton</td>
                 <td><a href=\"$url\">$name</a></td>
+                <td>$deleteButton</td>
             </tr>
             ";
         }
