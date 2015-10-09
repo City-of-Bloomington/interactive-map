@@ -1,5 +1,6 @@
 configuration.inc
 site_config.inc
+data/maps/*
 data/sessions/*
 tests/configuration.inc
 build

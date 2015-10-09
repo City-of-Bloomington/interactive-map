@@ -22,6 +22,7 @@ $ZEND_ACL->addResource(new Resource('people'));
 $ZEND_ACL->addResource(new Resource('users'));
 $ZEND_ACL->addResource(new Resource('login'));
 
+$ZEND_ACL->addResource(new Resource('maps'));
 $ZEND_ACL->addResource(new Resource('js'));
 
 /**
@@ -30,11 +31,13 @@ $ZEND_ACL->addResource(new Resource('js'));
 $ZEND_ACL->allow(null,'login');
 
 // Permissions for unauthenticated browsing
-$ZEND_ACL->allow(null,['index'],['index']);
+$ZEND_ACL->allow(null,['index', 'maps'],['index', 'view']);
 $ZEND_ACL->allow(null,['js'],['map']);
 
 // Allow Staff to do stuff
 $ZEND_ACL->allow('Staff', ['people'], ['index','view']);
+$ZEND_ACL->allow('Staff', ['maps'],   ['index','view', 'update']);
+
 
 
 // Administrator is allowed access to everything

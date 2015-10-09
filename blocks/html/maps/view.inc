@@ -5,7 +5,7 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  * @param string $this->map
  */
-$this->template->addToAsset('scripts', BASE_URI."/js/map?map={$this->map}");
+$this->template->addToAsset('scripts', BASE_URI."/js/maps/{$this->map->getInternalFilename()}.js");
 ?>
 <div id="map"></div>
 <script type="text/javascript">
