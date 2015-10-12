@@ -34,7 +34,7 @@ class Map extends ActiveRecord
 				$zend_db = Database::getConnection();
 				$sql = ActiveRecord::isId($id)
 					? 'select * from maps where id=?'
-					: 'select * from maps where name=?';
+					: 'select * from maps where alias=?';
 
 				$result = $zend_db->createStatement($sql)->execute([$id]);
 				if (count($result)) {
@@ -54,6 +54,7 @@ class Map extends ActiveRecord
 	public function validate()
 	{
         if (!$this->getName()) { throw new \Exception('missingRequiredFields'); }
+        if (!$this->getAlias()) { $this->setAlias($this->getName()); }
 	}
 
 	public function save() { parent::save(); }
@@ -66,14 +67,20 @@ class Map extends ActiveRecord
 	//----------------------------------------------------------------
 	// Generic Getters & Setters
 	//----------------------------------------------------------------
-	public function getId  () { return parent::get('id'  ); }
-	public function getName() { return parent::get('name'); }
+	public function getId   () { return parent::get('id'  ); }
+	public function getName () { return parent::get('name'); }
+	public function getAlias() { return parent::get('alias'); }
 
-	public function setName($s) { parent::set('name', $s); }
+	public function setName ($s) { parent::set('name',  $s); }
+	public function setAlias($s) { parent::set('alias', preg_replace('/[^a-z\-]/', '', strtolower($s))); }
 
 	public function handleUpdate(array $post, array $files)
 	{
-        $this->setName($post['name']);
+        $fields = ['name', 'alias'];
+        foreach ($fields as $f) {
+            $set = 'set'.ucfirst($f);
+            $this->$set($post[$f]);
+        }
         $this->saveFile($files);
 	}
 

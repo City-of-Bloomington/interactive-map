@@ -8,24 +8,32 @@
 use Blossom\Classes\View;
 
 $title = $this->map->getId() ? $this->_('map_edit') : $this->_('map_add');
-$name = View::escape($this->map->getName());
+
+$fields = ['name', 'alias'];
+foreach ($fields as $f) {
+    $get = 'get'.ucfirst($f);
+    $$f = View::escape($this->map->$get());
+}
 ?>
 <section>
     <header>
         <h1><?= $title; ?></h1>
     </header>
-    <form method="post" action="<?= BASE_URI; ?>/maps/update" enctype="multipart/form-data">
+    <form method="post" action="<?= self::generateUri('maps.update'); ?>" enctype="multipart/form-data">
         <fieldset>
-            <input name="map_id" type="hidden" value="<?= $this->map->getId(); ?>" />
+            <input name="id" type="hidden" value="<?= $this->map->getId(); ?>" />
             <dl><dt><label  for="name"><?= $this->_('name'); ?></label></dt>
                 <dd><input name="name" id="name" value="<?= $name; ?>" /></dd>
+            </dl>
+            <dl><dt><label  for="alias"><?= $this->_('alias'); ?></label></dt>
+                <dd><input name="alias" id="alias" value="<?= $alias; ?>" /></dd>
             </dl>
             <dl><dt><label  for="script"><?= $this->_('script'); ?></label></dt>
                 <dd><input name="script" id="script" type="file" /></dd>
             </dl>
             <?php
                 $h = $this->template->getHelper('saveAndCancelButtons');
-                echo $h->saveAndCancelButtons(BASE_URI.'/maps');
+                echo $h->saveAndCancelButtons(self::generateUri('maps.index'));
             ?>
         </fieldset>
     </form>

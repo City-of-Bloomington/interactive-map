@@ -7,7 +7,6 @@
  */
 use Application\Models\Person;
 use Blossom\Classes\View;
-
 ?>
 <section>
     <header>
@@ -18,7 +17,7 @@ use Blossom\Classes\View;
             if ($userCanEdit) {
                 echo '<div class="tools">';
                 echo $helper->buttonLink(
-                    BASE_URI.'/maps/update',
+                    self::generateUri('maps.update'),
                     $this->_('map_add'),
                     'add'
                 );
@@ -30,14 +29,14 @@ use Blossom\Classes\View;
     <?php
         foreach ($this->maps as $map) {
             $id = $map->getId();
-            $url = BASE_URI."/maps/view?map=$id";
+            $url = self::generateUri('maps.view', ['id'=>$map->getAlias()]);
             $name = View::escape($map->getName());
 
             $editButton = $userCanEdit
-                ? $helper->buttonLink(BASE_URI."/maps/update?map_id=$id", $this->_('map_edit'), 'edit')
+                ? $helper->buttonLink(self::generateUri('maps.update', ['id'=>$id]), $this->_('map_edit'), 'edit')
                 : '';
             $deleteButton = Person::isAllowed('maps', 'delete')
-                ? $helper->buttonLink(BASE_URI."/maps/delete?map_id=$id", $this->_('map_delete'), 'delete')
+                ? $helper->buttonLink(self::generateUri('maps.delete', ['id'=>$id]), $this->_('map_delete'), 'delete')
                 : '';
 
             echo "

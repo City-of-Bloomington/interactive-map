@@ -23,8 +23,8 @@ class MapsController extends Controller
 
     public function view()
     {
-        if (!empty($_GET['map'])) {
-            try { $map = new Map($_GET['map']); }
+        if (!empty($_GET['id'])) {
+            try { $map = new Map($_GET['id']); }
             catch (\Exception $e) { }
         }
         if (!isset($map)) {
@@ -38,8 +38,8 @@ class MapsController extends Controller
 
     public function update()
     {
-        if (!empty($_REQUEST['map_id'])) {
-            try { $map = new Map($_REQUEST['map_id']); }
+        if (!empty($_REQUEST['id'])) {
+            try { $map = new Map($_REQUEST['id']); }
             catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
         }
         else { $map = new Map(); }
@@ -50,11 +50,11 @@ class MapsController extends Controller
             return;
         }
 
-        if (isset($_POST['map_id'])) {
+        if (isset($_POST['id'])) {
             try {
                 $map->handleUpdate($_POST, $_FILES);
                 $map->save();
-                header('Location: '.BASE_URL.'/maps/view?map='.$map->getId());
+                header('Location: '.self::generateUrl('maps.view', ['id'=>$map->getId()]));
                 exit();
             }
             catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
@@ -72,7 +72,7 @@ class MapsController extends Controller
             }
             catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
         }
-        header('Location: '.BASE_URL.'/maps');
+        header('Location: '.self::generateUrl('maps.index'));
         exit();
     }
 }
