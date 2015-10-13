@@ -9,7 +9,7 @@ use Blossom\Classes\View;
 
 $title = $this->map->getId() ? $this->_('map_edit') : $this->_('map_add');
 
-$fields = ['name', 'alias'];
+$fields = ['name', 'alias', 'navigationMarkdown', 'relatedMarkdown'];
 foreach ($fields as $f) {
     $get = 'get'.ucfirst($f);
     $$f = View::escape($this->map->$get());
@@ -31,6 +31,17 @@ foreach ($fields as $f) {
             <dl><dt><label  for="script"><?= $this->_('script'); ?></label></dt>
                 <dd><input name="script" id="script" type="file" /></dd>
             </dl>
+        </fieldset>
+
+        <fieldset><legend><?= $this->_('navigationMarkdown'); ?></legend>
+            <textarea name="navigationMarkdown"><?= $navigationMarkdown; ?></textarea>
+        </fieldset>
+
+        <fieldset><legend><?= $this->_('relatedMarkdown'); ?></legend>
+            <textarea name="relatedMarkdown"><?= $relatedMarkdown; ?></textarea>
+        </fieldset>
+
+        <fieldset><legend><?= $this->_('save'); ?></legend>
             <?php
                 $h = $this->template->getHelper('saveAndCancelButtons');
                 echo $h->saveAndCancelButtons(self::generateUri('maps.index'));

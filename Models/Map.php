@@ -70,13 +70,17 @@ class Map extends ActiveRecord
 	public function getId   () { return parent::get('id'  ); }
 	public function getName () { return parent::get('name'); }
 	public function getAlias() { return parent::get('alias'); }
+	public function getNavigationMarkdown() { return parent::get('navigationMarkdown'); }
+	public function getRelatedMarkdown   () { return parent::get('relatedMarkdown'   ); }
 
 	public function setName ($s) { parent::set('name',  $s); }
 	public function setAlias($s) { parent::set('alias', preg_replace('/[^a-z\-]/', '', strtolower($s))); }
+	public function setNavigationMarkdown($s) { parent::set('navigationMarkdown', $s); }
+	public function setRelatedMarkdown   ($s) { parent::set('relatedMarkdown',    $s); }
 
 	public function handleUpdate(array $post, array $files)
 	{
-        $fields = ['name', 'alias'];
+        $fields = ['name', 'alias', 'navigationMarkdown', 'relatedMarkdown'];
         foreach ($fields as $f) {
             $set = 'set'.ucfirst($f);
             $this->$set($post[$f]);

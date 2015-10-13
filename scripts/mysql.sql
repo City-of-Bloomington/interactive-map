@@ -16,5 +16,7 @@ create table maps (
     id    int unsigned not null primary key auto_increment,
     name  varchar(128) not null unique,
     alias varchar(128) not null unique,
-    internalFilename varchar(32) not null
+    internalFilename varchar(32) not null,
+    navigationMarkdown text,
+    relatedMarkdown    text
 );

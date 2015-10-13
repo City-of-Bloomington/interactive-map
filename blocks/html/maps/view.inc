@@ -5,8 +5,13 @@
  * @author Cliff Ingham <inghamn@bloomington.in.gov>
  * @param string $this->map
  */
+use Michelf\Markdown;
+$navigation = Markdown::defaultTransform($this->map->getNavigationMarkdown());
+$related    = Markdown::defaultTransform($this->map->getRelatedMarkdown());
+
 $this->template->addToAsset('scripts', BASE_URI."/js/maps/{$this->map->getInternalFilename()}.js");
 ?>
+<div class="navigationMarkdown"><?= $navigation; ?></div>
 <div id="map"></div>
 <script type="text/javascript">
     // Transfer some constants from PHP to JavaScript.
@@ -19,3 +24,4 @@ $this->template->addToAsset('scripts', BASE_URI."/js/maps/{$this->map->getIntern
         default_longitude: '<?= DEFAULT_LONGITUDE; ?>'
     };
 </script>
+<div class="relatedMarkdown"><?= $related; ?></div>

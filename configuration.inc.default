@@ -65,6 +65,7 @@ $config = [
             'Zend\Loader'          => APPLICATION_HOME.'/vendor/zendframework/zend-loader/src',
             'Zend\Hydrator'        => APPLICATION_HOME.'/vendor/zendframework/zend-hydrator/src',
             'Zend\Db'              => APPLICATION_HOME.'/vendor/zendframework/zend-db/src',
+            'Michelf'              => APPLICATION_HOME.'/vendor/michelf/php-markdown/Michelf'
 		]
 	]
 ];
