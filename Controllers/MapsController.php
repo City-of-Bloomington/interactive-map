@@ -23,6 +23,7 @@ class MapsController extends Controller
 
     public function view()
     {
+        echo "Maps.view\n";
         if (!empty($_GET['id'])) {
             try { $map = new Map($_GET['id']); }
             catch (\Exception $e) { }
@@ -65,14 +66,32 @@ class MapsController extends Controller
 
     public function delete()
     {
-        if (!empty($_REQUEST['map_id'])) {
+        if (!empty($_REQUEST['id'])) {
             try {
-                $map = new Map($_REQUEST['map_id']);
+                $map = new Map($_REQUEST['id']);
                 $map->delete();
             }
             catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
         }
         header('Location: '.self::generateUrl('maps.index'));
         exit();
+    }
+
+    /**
+     * URL to download the javascript file for a map
+     */
+    public function download()
+    {
+        header('Content-type: application/javascript; charset=utf-8');
+        if (!empty($_GET['id'])) {
+            try {
+                $map = new Map($_GET['id']);
+                header("Content-Disposition: attachment; filename={$map->getAlias()}.js");
+                readfile(APPLICATION_HOME."/public/js/maps/{$map->getInternalFilename()}.js");
+                exit();
+            }
+            catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
+        }
+        header('HTTP/1.1 404 Not Found', true, 404);
     }
 }

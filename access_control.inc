@@ -36,7 +36,7 @@ $ZEND_ACL->allow(null,['js'],['map']);
 
 // Allow Staff to do stuff
 $ZEND_ACL->allow('Staff', ['people'], ['index','view']);
-$ZEND_ACL->allow('Staff', ['maps'],   ['index','view', 'update']);
+$ZEND_ACL->allow('Staff', ['maps'],   ['index','view', 'update', 'download']);
 
 
 

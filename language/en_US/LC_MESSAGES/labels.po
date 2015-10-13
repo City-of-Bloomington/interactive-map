@@ -55,6 +55,9 @@ msgstr "Logout"
 msgid "help"
 msgstr "Help"
 
+msgid "download"
+msgstr "Download"
+
 msgid "name"
 msgstr "Name"
 
@@ -131,3 +134,9 @@ msgstr "Delete Map"
 
 msgid "script"
 msgstr "Script"
+
+msgid "navigationMarkdown"
+msgstr "Navigation Links"
+
+msgid "relatedMarkdown"
+msgstr "Related Links"

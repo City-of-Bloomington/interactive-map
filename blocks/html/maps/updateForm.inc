@@ -29,7 +29,12 @@ foreach ($fields as $f) {
                 <dd><input name="alias" id="alias" value="<?= $alias; ?>" /></dd>
             </dl>
             <dl><dt><label  for="script"><?= $this->_('script'); ?></label></dt>
-                <dd><input name="script" id="script" type="file" /></dd>
+                <dd><input name="script" id="script" type="file" />
+                    <a href="<?= self::generateUri('maps.download', ['id'=>$this->map->getId()]); ?>"
+                        class="download button">
+                        <?= $this->_('download'); ?>
+                    </a>
+                </dd>
             </dl>
         </fieldset>
 
@@ -41,7 +46,7 @@ foreach ($fields as $f) {
             <textarea name="relatedMarkdown"><?= $relatedMarkdown; ?></textarea>
         </fieldset>
 
-        <fieldset><legend><?= $this->_('save'); ?></legend>
+        <fieldset>
             <?php
                 $h = $this->template->getHelper('saveAndCancelButtons');
                 echo $h->saveAndCancelButtons(self::generateUri('maps.index'));

@@ -13,10 +13,11 @@ $ROUTES->attach('maps', '/maps', function ($r) {
     $r->setTokens(['id'=>'[a-z0-9\-]+']);
     $r->setValues(['controller'=>'maps']);
 
-    $r->add('index',  '')            ->addValues(['action'=>'index' ]);
-    $r->add('update', '/update{/id}')->addValues(['action'=>'update']);
-    $r->add('delete', '/delete{/id}')->addValues(['action'=>'delete']);
-    $r->add('view',   '/{id}')       ->addValues(['action'=>'view'  ]);
+    $r->add('index',    '')              ->addValues(['action'=>'index'   ]);
+    $r->add('update',   '/update{/id}')  ->addValues(['action'=>'update'  ]);
+    $r->add('delete',   '/delete{/id}')  ->addValues(['action'=>'delete'  ]);
+    $r->add('view',     '/{id}')         ->addValues(['action'=>'view'    ]);
+    $r->add('download', '/download/{id}')->addValues(['action'=>'download']);
 });
 
 $ROUTES->attach('login', '/login', function ($r) {
