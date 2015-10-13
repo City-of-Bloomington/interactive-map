@@ -28,9 +28,9 @@ use Blossom\Classes\View;
     <table>
     <?php
         foreach ($this->maps as $map) {
-            $id = $map->getId();
-            $url = self::generateUri('maps.view', ['id'=>$map->getAlias()]);
-            $name = View::escape($map->getName());
+            $id    = $map->getId();
+            $url   = self::generateUri('maps.view', ['id'=>$map->getAlias()]);
+            $name  = View::escape($map->getName());
 
             $editButton = $userCanEdit
                 ? $helper->buttonLink(self::generateUri('maps.update', ['id'=>$id]), $this->_('map_edit'), 'edit')
@@ -39,8 +39,12 @@ use Blossom\Classes\View;
                 ? $helper->buttonLink(self::generateUri('maps.delete', ['id'=>$id]), $this->_('map_delete'), 'delete')
                 : '';
 
+            $mediaUrl = $map->getMediaUrl();
+            $media = $mediaUrl ? "<img src=\"$mediaUrl\" />" : '';
+
             echo "
             <tr><td>$editButton</td>
+                <td>$media</td>
                 <td><a href=\"$url\">$name</a></td>
                 <td>$deleteButton</td>
             </tr>

@@ -23,7 +23,6 @@ class MapsController extends Controller
 
     public function view()
     {
-        echo "Maps.view\n";
         if (!empty($_GET['id'])) {
             try { $map = new Map($_GET['id']); }
             catch (\Exception $e) { }

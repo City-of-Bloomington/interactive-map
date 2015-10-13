@@ -67,9 +67,10 @@ class Map extends ActiveRecord
 	//----------------------------------------------------------------
 	// Generic Getters & Setters
 	//----------------------------------------------------------------
-	public function getId   () { return parent::get('id'  ); }
-	public function getName () { return parent::get('name'); }
-	public function getAlias() { return parent::get('alias'); }
+	public function getId      () { return parent::get('id'  ); }
+	public function getName    () { return parent::get('name'); }
+	public function getAlias   () { return parent::get('alias'); }
+	public function getMedia_id() { return parent::get('media_id'); }
 	public function getNavigationMarkdown() { return parent::get('navigationMarkdown'); }
 	public function getRelatedMarkdown   () { return parent::get('relatedMarkdown'   ); }
 
@@ -77,6 +78,13 @@ class Map extends ActiveRecord
 	public function setAlias($s) { parent::set('alias', preg_replace('/[^a-z\-]/', '', strtolower($s))); }
 	public function setNavigationMarkdown($s) { parent::set('navigationMarkdown', $s); }
 	public function setRelatedMarkdown   ($s) { parent::set('relatedMarkdown',    $s); }
+	public function setMedia_id($id)
+	{
+        if (defined('MEDIA_MANAGER')) {
+            $id = MediaManager::getValidId($id);
+            parent::set('media_id', $id);
+        }
+	}
 
 	public function handleUpdate(array $post, array $files)
 	{
@@ -85,6 +93,9 @@ class Map extends ActiveRecord
             $set = 'set'.ucfirst($f);
             $this->$set($post[$f]);
         }
+        // Media support may not be configured
+        if (isset($post['media_id'])) { $this->setMedia_id($post['media_id']); }
+
         $this->saveFile($files);
 	}
 
@@ -129,5 +140,15 @@ class Map extends ActiveRecord
 			parent::set('internalFilename', $filename);
 		}
 		return $filename;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getMediaUrl()
+	{
+        if (defined('MEDIA_MANAGER') && $this->getMedia_id()) {
+            return MediaManager::getMediaUrl($this->getMedia_id(), MEDIA_MANAGER_SIZE);
+       }
 	}
 }

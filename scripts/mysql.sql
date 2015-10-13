@@ -18,5 +18,6 @@ create table maps (
     alias varchar(128) not null unique,
     internalFilename varchar(32) not null,
     navigationMarkdown text,
-    relatedMarkdown    text
+    relatedMarkdown    text,
+    media_id int unsigned
 );

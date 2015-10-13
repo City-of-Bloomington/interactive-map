@@ -16,7 +16,17 @@ define('LEAFLET', BASE_URI.'/js/vendor/leaflet-0.7.5');
 define('MAPBOX_API_KEY', 'pk.ey');
 define('MAPBOX_STYLE', 'mapbox.streets');
 
-define('GEOSERVER', 'https://bloomington.in.gov/geoserver');
+define('GEOSERVER', 'https://localhost/geoserver');
+
+/**
+ * Media Manager integration is optional.
+ * If defined, you'll have access to a media_id field for the maps.
+ *
+ * @see https://github.com/City-of-Bloomington/media-manager
+ */
+define('MEDIA_MANAGER', 'https://localhost/media');
+define('MEDIA_MANAGER_SIZE', 'Map Thumbnail');
+
 
 /**
  * Used when there's an error on the site.  The Framework will
