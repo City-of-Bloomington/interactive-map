@@ -9,3 +9,10 @@ site_config.inc
 /data/maps/*
 /data/sessions/*
 /scripts/backup.cnf
+composer.lock
+.sass-cache
+node_modules
+package.json
+gulpfile.js
+.gulp-build
+.ftppass

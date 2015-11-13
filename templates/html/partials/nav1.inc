@@ -7,8 +7,8 @@
 use Application\Models\MapsTable;
 use Blossom\Classes\View;
 ?>
-<div class="nav1">
-    <nav class="container">
+<div class="fn1-nav1">
+    <nav class="fn1-nav1-container">
     <?php
         $table = new MapsTable();
         $list = $table->find();

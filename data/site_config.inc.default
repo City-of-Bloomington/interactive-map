@@ -7,6 +7,8 @@ define('APPLICATION_NAME','application');
  */
 define('BASE_URL','http://localhost/application');
 define('BASE_URI','/application');
+define('FN1_URL', '//bloomington.in.gov/static/fn1-releases/dev');
+define('THEME', 'kirkwood');
 
 /**
  * Javascript APIs

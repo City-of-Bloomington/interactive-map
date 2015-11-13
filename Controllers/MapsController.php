@@ -23,6 +23,8 @@ class MapsController extends Controller
 
     public function view()
     {
+        $this->template->setFileName('two-column');
+
         if (!empty($_GET['id'])) {
             try { $map = new Map($_GET['id']); }
             catch (\Exception $e) { }
@@ -33,6 +35,8 @@ class MapsController extends Controller
             return;
         }
 
+        $this->template->blocks['panel-one'][] = new Block('maps/navigation.inc', ['nav' => $map->getNavigationMarkdown()]);
+        $this->template->blocks['panel-one'][] = new Block('maps/related.inc', ['related' => $map->getRelatedMarkdown()]);
         $this->template->blocks[] = new Block('maps/view.inc', ['map'=>$map]);
     }
 

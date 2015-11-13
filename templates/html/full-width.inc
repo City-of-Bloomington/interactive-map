@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <?php $this->_include('partials/head.inc'); ?>
-<body>
+<body class="fn1-body">
 	<?php $this->_include('partials/header.inc'); ?>
-	<main>
-        <div class="container full-width">
+	<main class="fn1-main">
+        <div class="fn1-main-container full-width">
             <div class="panel" id="content-panel">
             <?php
                 include BLOSSOM.'/errorMessages.php';

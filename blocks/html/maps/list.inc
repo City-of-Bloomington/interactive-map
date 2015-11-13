@@ -25,7 +25,7 @@ use Blossom\Classes\View;
             }
         ?>
     </header>
-    <table>
+    <table class="fn1-table">
     <?php
         foreach ($this->maps as $map) {
             $id    = $map->getId();
@@ -43,9 +43,11 @@ use Blossom\Classes\View;
             $media = $mediaUrl ? "<img src=\"$mediaUrl\" />" : '';
 
             echo "
-            <tr><td>$editButton</td>
+            <tr>
+                <th scope=\"row\">$name</th>
+                <td><a href=\"$url\">View Map</a></td>
+                <td>$editButton</td>
                 <td>$media</td>
-                <td><a href=\"$url\">$name</a></td>
                 <td>$deleteButton</td>
             </tr>
             ";

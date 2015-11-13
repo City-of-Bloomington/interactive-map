@@ -1,14 +1,4 @@
 @import 'sass-modules/_vars-mixins';
-@import 'sass-modules/_layout';
-@import 'sass-modules/_html-elements';
-@import 'sass-modules/_header';
-@import 'sass-modules/_menu';
-@import 'sass-modules/_nav1';
-@import 'sass-modules/_content-section';
-@import 'sass-modules/_main';
-@import 'sass-modules/_field';
-@import 'sass-modules/_buttons';
-@import 'sass-modules/_tables';
 
 /**
  * Side Panel
@@ -27,4 +17,4 @@
 #panel-one ul { margin:.25em; padding:0; }
 #panel-one a { font-weight:$font-weight-heading; color:$color-text-default; }
 
-#map { width:100%; height:800px; }
+#map { width:100%; height:100%; }
