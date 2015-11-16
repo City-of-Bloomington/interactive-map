@@ -1,7 +1,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php if(defined('THEME')): ?>
+    <?php if(!defined('THEME')): ?>
         <link rel="stylesheet" href="<?= FN1_URL; ?>/css/default.css" />
     <?php else: ?>
         <link rel="stylesheet" href="<?= FN1_URL; ?>/css/default.css" />
