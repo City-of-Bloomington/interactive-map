@@ -15,4 +15,4 @@ gulpfile.js
 .ftppass
 vendor
 composer.lock
-
+.gulp-build
