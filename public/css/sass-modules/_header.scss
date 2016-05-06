@@ -1,63 +1,56 @@
 body > header {
     border-top: .4em solid $color-accent;
+    color: $color-header;
 
-    > .container {
-        margin: 0 auto 0;
-        color: $color-header;
-        position: relative;
-        @include clearfix();
+    h1::before {
+        display:block; content:''; float:left;
+        width:2.25rem; height:2.25rem;
+        background: url($url-logo);
+        background-size:100% 100%;
+    }
 
-        @if($url-logo != '') {
-            &:before {
-                background: url($url-logo);
-                background-size: 100% 100%;
-                content: '';
-                display: block;
-                float: left;
-                height: 4em;
-                margin: .75em .75em .75em 0;
-                width: 4em;
+    .utilityBar {
+        position:absolute; right:10px; top:10px;
+
+        nav { float:right; margin-right:1em; }
+        .launcher {
+
+            &[aria-expanded="true"] + .links {
+                opacity: 1;
+            }
+            &[aria-expanded="false"] + .links {
+                opacity: 0;
             }
         }
 
-        .site {
-            &-title {
-                float: left;
-                padding: .5em 0;
+        .links {
+            background: $color-content-background;
+            border: 1px solid $color-border-modal;
+            box-shadow: 0 0 1em 0 $color-shadow;
+            padding: .5em 0;
 
-                a { color: $color-header; }
-
-                h1 {
-                    font-size:1.5em;
-                    font-weight: normal;
-                    margin: .5em 0 .25em 0;
-                }
-            }
-            &-utilityBar {
-                position: relative;
-
-                nav {
-                    float: right;
-                    margin: 0 0 0 1em;
+            a {
+                padding: .5em 1em;
+                &:hover {
+                    background: $color-header;
+                    color: $color-content-background;
                 }
             }
         }
     }
 
-    @media screen and (min-width: $window-med) {
-        position: relative;
+}
 
-        > .container {
-            box-sizing: border-box;
-            margin: 0 auto;
-            padding-top: .5em;
-            width: 46em;
-        }
-    }
+#nav1 {
+    overflow:auto;
+    border-top: .4em solid $color-accent;
+    border-bottom:2px solid $color-accent;
 
-    @media screen and (min-width: $window-lg) {
-        > .container {
-            width: 60em;
-        }
+    a {
+        color: $color-nav1;
+        display: block;
+        float: left;
+        margin: 0 .5em .4em 0;
+        padding: .5em .75em;
     }
 }

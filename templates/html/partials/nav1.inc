@@ -9,14 +9,5 @@ use Blossom\Classes\View;
 ?>
 <div class="nav1">
     <nav class="container">
-    <?php
-        $table = new MapsTable();
-        $list = $table->find();
-        foreach ($list as $map) {
-            $name = View::escape($map->getName());
-            $url  = self::generateUri('maps.view', ['id'=>$map->getAlias()]);
-            echo "<a href=\"$url\">$name</a>";
-        }
-    ?>
     </nav>
 </div>
