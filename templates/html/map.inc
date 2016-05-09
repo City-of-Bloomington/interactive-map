@@ -15,7 +15,7 @@
             </div>
         </div>
 	</main>
-	<?php $this-> _include('partials/footer.inc'); ?>
+	<?php $this->_include('partials/footer.inc'); ?>
 </body>
 </html>
 <?php $this->_include('partials/garbageCollection.inc'); ?>
