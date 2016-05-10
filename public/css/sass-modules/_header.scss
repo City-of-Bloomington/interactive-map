@@ -1,13 +1,5 @@
 body > header {
-    border-top: .4em solid $color-accent;
     color: $color-header;
-
-    h1::before {
-        display:block; content:''; float:left;
-        width:2.25rem; height:2.25rem;
-        background: url($url-logo);
-        background-size:100% 100%;
-    }
 
     .utilityBar {
         position:absolute; right:10px; top:10px;
