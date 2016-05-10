@@ -6,11 +6,6 @@
  */
 use Blossom\Classes\View;
 ?>
-<form action="<?= self::generateUri('maps.search');  ?>" class="searchForm">
-    <label>
-
-        <!-- TODO: Replace ITEMS below with the plural form of the result type returned by the search -->
-        <span><?= sprintf($this->_('searchForItems', 'labels'), 'ITEMS'); ?></span>
-        <input type="text" />
-    </label>
+<form action="" class="searchForm">
+    <h1>Add search form here</h1>
 </form>
