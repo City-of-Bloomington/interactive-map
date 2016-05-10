@@ -17,6 +17,7 @@ class MapsController extends Controller
     {
         $table = new MapsTable();
         $list = $table->find();
+        $relatedLinks = $table->find('relatedMarkdown');
 
         $this->template->blocks[] = new Block('maps/list.inc', ['maps'=>$list]);
     }
@@ -33,6 +34,11 @@ class MapsController extends Controller
             return;
         }
 
+        $this->template->blocks['panel1'][] = new Block('maps/searchForm.inc');
+#        if (!empty($map->getLegendMarkdown())) {
+            $this->template->blocks['panel1'][] = new Block('maps/viewLegend.inc', ['mapId' => $map->getId()]);
+#        }
+        $this->template->blocks['panel1'][] = new Block('maps/relatedLinks.inc', ['linksMarkdown' => $map->getRelatedMarkdown()]);
         $this->template->blocks[] = new Block('maps/view.inc', ['map'=>$map]);
     }
 
@@ -92,5 +98,10 @@ class MapsController extends Controller
             catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
         }
         header('HTTP/1.1 404 Not Found', true, 404);
+    }
+
+    public function search()
+    {
+        return;
     }
 }

@@ -18,6 +18,7 @@ $ROUTES->attach('maps', '/maps', function ($r) {
     $r->add('delete',   '/delete{/id}')  ->addValues(['action'=>'delete'  ]);
     $r->add('view',     '/{id}')         ->addValues(['action'=>'view'    ]);
     $r->add('download', '/download/{id}')->addValues(['action'=>'download']);
+    $r->add('search',   '/search{/id}')  ->addValues(['action'=>'search']);
 });
 
 $ROUTES->attach('login', '/login', function ($r) {

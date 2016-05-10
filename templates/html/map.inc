@@ -5,15 +5,19 @@
 <body>
 	<?php $this->_include('partials/header.inc'); ?>
 	<main>
-        <div class="container full-width">
-            <div class="panel" id="content-panel">
-            <?php
-                include BLOSSOM.'/errorMessages.php';
-
-                echo $this->includeBlocks();
-            ?>
-            </div>
+        <div class="panel1">
+<?= $this->includeBlocks('panel1'); ?>
         </div>
+        <?php if($this->includeBlocks('panel2')): ?>
+            <div class="resultsPanel">
+                <?= $this->includeBlocks('panel2'); ?>
+            </div>
+        <?php endif ?>
+        <?php
+            include BLOSSOM.'/errorMessages.php';
+
+            echo $this->includeBlocks();
+        ?>
 	</main>
 	<?php $this->_include('partials/footer.inc'); ?>
 </body>

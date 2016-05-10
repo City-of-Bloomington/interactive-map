@@ -17,18 +17,19 @@
  * Side Panel
 +
  */
-#panel-one nav {
-    border:2px solid $color-border-table;
-    margin-bottom:0.5em;
-    border-radius:10px;
-    overflow:hidden;
-}
-#panel-one h2 {
-    background-color:$color-text-default; color:$color-content-background;
-    border-bottom:2px solid $color-border-table;
-    margin:0; padding:.25em;
-}
-#panel-one ul { margin:.25em; padding:0; }
-#panel-one a { font-weight:$font-weight-heading; color:$color-text-default; }
 
-#map { width:100%; height:800px; }
+.panel1 {
+    float: left;
+    width: 20%;
+}
+.panel2 {
+    @extend .panel1;
+    + .map {
+        margin-left: 40%;
+    }
+}
+.map {
+    height: 800px;
+    margin: 0 0 0 20%;
+    width: auto;
+}

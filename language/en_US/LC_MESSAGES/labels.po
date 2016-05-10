@@ -140,3 +140,6 @@ msgstr "Navigation Links"
 
 msgid "relatedMarkdown"
 msgstr "Related Links"
+
+msgid "searchForItems"
+msgstr "Search for %s near you"
