@@ -11,8 +11,8 @@ include '../configuration.inc';
 
 // Create the default Template
 $template = !empty($_REQUEST['format'])
-	? new Template('default',$_REQUEST['format'])
-	: new Template('default');
+	? new Template('map',$_REQUEST['format'])
+	: new Template('map');
 
 $p = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $route = $ROUTES->match($p, $_SERVER);
