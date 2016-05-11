@@ -9,11 +9,22 @@ define('BASE_URL','http://localhost/application');
 define('BASE_URI','/application');
 
 /**
+ * Specify the theme directory
+ *
+  * Remember to create a symbolic link in public/css to the theme CSS
+  * that you declare here.
+ *
+ * A theme can consist of templates, blocks which will override core.
+ * The current theme's screen.css will be included in the HTML head.
+ */
+define('THEME', 'Kirkwood');
+
+/**
  * Javascript APIs
  */
 define('LEAFLET', BASE_URI.'/js/vendor/leaflet-0.7.5');
 
-define('MAPBOX_API_KEY', 'pk.ey');
+define('MAPBOX_API_KEY', '');
 define('MAPBOX_STYLE', 'mapbox.streets');
 
 define('GEOSERVER', 'https://localhost/geoserver');
@@ -24,28 +35,20 @@ define('GEOSERVER', 'https://localhost/geoserver');
  *
  * @see https://github.com/City-of-Bloomington/media-manager
  */
-define('MEDIA_MANAGER', 'https://localhost/media');
+ define('MEDIA_MANAGER', 'https://localhost/media');
 define('MEDIA_MANAGER_SIZE', 'Map Thumbnail');
-
-
-/**
- * Used when there's an error on the site.  The Framework will
- * print out a nice error message, encouraging users to report any problems
- * See: Blossom\Classes\Error
- */
-define('ADMINISTRATOR_NAME','Site Admin');
-define('ADMINISTRATOR_EMAIL','admin@servername.com');
 
 /**
  * Database Setup
- * Refer to the PDO documentation for DSN sytnax for your database type
- * http://www.php.net/manual/en/pdo.drivers.php
  */
-define('DB_ADAPTER','Pdo_Mysql');
-define('DB_HOST','localhost');
-define('DB_NAME','application');
-define('DB_USER','application');
-define('DB_PASS','password');
+$DATABASES = [
+    'default' => [
+        'dsn'      => 'mysql:dbname=database;host=localhost',
+        'username' => 'user',
+        'password' => 'pass',
+        'options'  => []
+    ]
+];
 
 /**
  * Directory Configuration
@@ -59,27 +62,30 @@ define('DB_PASS','password');
  */
 // Example for ADS style authentication
 $DIRECTORY_CONFIG = [
-//	'Ldap' => [
-//		'DIRECTORY_SERVER'=>'ldaps://example.org:636',
-//		'DIRECTORY_BASE_DN'=>'OU=Department,DC=example,DC=org',
-//		'DIRECTORY_USERNAME_ATTRIBUTE'=>'CN',
-//		'DIRECTORY_USER_BINDING'=>'{username}@example.org',
-//		'DIRECTORY_ADMIN_BINDING'=>'admin@example.org',
-//		'DIRECTORY_ADMIN_PASS'=>'password'
-//	]
+//  'Ldap' => [
+//      'classname' => 'Site\Classes\Ldap',
+//      'DIRECTORY_SERVER'=>'ldaps://example.org:636',
+//      'DIRECTORY_BASE_DN'=>'OU=Department,DC=example,DC=org',
+//      'DIRECTORY_USERNAME_ATTRIBUTE'=>'CN',
+//      'DIRECTORY_USER_BINDING'=>'{username}@example.org',
+//      'DIRECTORY_ADMIN_BINDING'=>'admin@example.org',
+//      'DIRECTORY_ADMIN_PASS'=>'password'
+//  ]
 //
 // Example for LDAP style authentication
-//	'Ldap' => [
-//		'DIRECTORY_SERVER'=>'ldaps://example.org:636');
-//		'DIRECTORY_BASE_DN'=>'ou=people,o=ldap.domain.somewhere');
-//		'DIRECTORY_USERNAME_ATTRIBUTE'=>'uid');
-//		'DIRECTORY_USER_BINDING'=>'uid={username},'.DIRECTORY_BASE_DN);
-//		'DIRECTORY_ADMIN_BINDING'=>'uid=admin,'.DIRECTORY_BASE_DN);
-//		'DIRECTORY_ADMIN_PASS'=>'password');
-//	]
+//  'Ldap' => [
+//      'classname' => 'Site\Classes\Ldap',
+//      'DIRECTORY_SERVER'=>'ldaps://example.org:636');
+//      'DIRECTORY_BASE_DN'=>'ou=people,o=ldap.domain.somewhere');
+//      'DIRECTORY_USERNAME_ATTRIBUTE'=>'uid');
+//      'DIRECTORY_USER_BINDING'=>'uid={username},'.DIRECTORY_BASE_DN);
+//      'DIRECTORY_ADMIN_BINDING'=>'uid=admin,'.DIRECTORY_BASE_DN);
+//      'DIRECTORY_ADMIN_PASS'=>'password');
+//  ]
 // Example for Directory webservice
 //  'Employee' => [
-//      'DIRECTORY_SERVER' => 'http://apps.bloomington.in.gov/directory'
+//      'classname' => 'Site\Classes\Employee',
+//      'DIRECTORY_SERVER' => 'http://localhost/directory',
 //  ]
 ];
 

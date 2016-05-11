@@ -9,11 +9,6 @@ use Blossom\Classes\Template;
 
 include '../configuration.inc';
 
-// Create the default Template
-$template = !empty($_REQUEST['format'])
-	? new Template('map',$_REQUEST['format'])
-	: new Template('map');
-
 $p = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $route = $ROUTES->match($p, $_SERVER);
 if ($route) {
@@ -32,18 +27,24 @@ if ($route) {
                 $_REQUEST['id'] = $route->params['id'];
             }
 
-            $c = new $controller($template);
-            $c->$action();
+            $c = new $controller();
+            $view = $c->$action($route->params);
         }
         else {
-            header('HTTP/1.1 403 Forbidden', true, 403);
+            $view = new \Application\Views\ForbiddenView();
         }
     }
 }
 else {
     $f = $ROUTES->getFailedRoute();
-	header('HTTP/1.1 404 Not Found', true, 404);
-	$template->blocks[] = new Block('404.inc');
+    $view = new \Application\Views\NotFoundView();
 }
 
-echo $template->render();
+echo $view->render();
+
+if ($view->outputFormat === 'html') {
+    # Calculate the process time
+    $endTime = microtime(1);
+    $processTime = $endTime - $startTime;
+    echo "<!-- Process Time: $processTime -->";
+}

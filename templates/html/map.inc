@@ -8,11 +8,8 @@
         <div class="panel1">
 <?= $this->includeBlocks('panel1'); ?>
         </div>
-        <?php if($this->includeBlocks('panel2')): ?>
-            <div class="resultsPanel">
-                <?= $this->includeBlocks('panel2'); ?>
-            </div>
-        <?php endif ?>
+        <div class="resultsPanel" hidden>
+        </div>
         <?php
             include BLOSSOM.'/errorMessages.php';
 

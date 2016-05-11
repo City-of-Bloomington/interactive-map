@@ -28,17 +28,16 @@ class Map extends ActiveRecord
 	{
 		if ($id) {
 			if (is_array($id)) {
-				$this->exchangeArray($id);
+				$this->data = $id;
 			}
 			else {
-				$zend_db = Database::getConnection();
 				$sql = ActiveRecord::isId($id)
 					? 'select * from maps where id=?'
 					: 'select * from maps where alias=?';
 
-				$result = $zend_db->createStatement($sql)->execute([$id]);
+				$result = parent::doQuery($sql, [$id]);
 				if (count($result)) {
-					$this->exchangeArray($result->current());
+					$this->data = $result[0];
 				}
 				else {
 					throw new \Exception('maps/unknown');

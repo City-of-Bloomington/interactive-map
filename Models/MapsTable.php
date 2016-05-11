@@ -7,7 +7,6 @@
 namespace Application\Models;
 
 use Blossom\Classes\TableGateway;
-use Zend\Db\Sql\Select;
 
 class MapsTable extends TableGateway
 {
@@ -19,14 +18,4 @@ class MapsTable extends TableGateway
 	 * @param bool $paginated Whether to return a paginator or a raw resultSet
 	 * @param int $limit
 	 */
-	public function find($fields=null, $order='name', $paginated=false, $limit=null)
-	{
-		$select = new Select('maps');
-		if (count($fields)) {
-			foreach ($fields as $key=>$value) {
-                $select->where([$key=>$value]);
-			}
-		}
-		return parent::performSelect($select, $order, $paginated, $limit);
-	}
 }

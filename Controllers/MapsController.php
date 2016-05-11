@@ -13,19 +13,19 @@ use Blossom\Classes\Controller;
 
 class MapsController extends Controller
 {
-    public function index()
+    public function index(array $params)
     {
         $table = new MapsTable();
         $list = $table->find();
-        $relatedLinks = $table->find('relatedMarkdown');
 
-        $this->template->blocks[] = new Block('maps/list.inc', ['maps'=>$list]);
+        return new \Application\Views\Maps\IndexView(['maps' => $list]);
+
     }
 
-    public function view()
+    public function view(array $params)
     {
-        if (!empty($_GET['id'])) {
-            try { $map = new Map($_GET['id']); }
+        if (!empty($params['id'])) {
+            try { $map = new Map($params['id']); }
             catch (\Exception $e) { }
         }
         if (!isset($map)) {
@@ -34,12 +34,11 @@ class MapsController extends Controller
             return;
         }
 
-        $this->template->blocks['panel1'][] = new Block('maps/searchForm.inc');
-        $this->template->blocks['panel1'][] = new Block('maps/relatedLinks.inc', ['linksMarkdown' => $map->getRelatedMarkdown()]);
-        $this->template->blocks[] = new Block('maps/view.inc', ['map'=>$map]);
+        return new \Application\Views\Maps\DetailView(['map' => $map]);
+
     }
 
-    public function update()
+    public function update(array $params)
     {
         if (!empty($_REQUEST['id'])) {
             try { $map = new Map($_REQUEST['id']); }
@@ -63,14 +62,15 @@ class MapsController extends Controller
             catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
         }
 
-        $this->template->blocks[] = new Block('maps/updateForm.inc', ['map'=>$map]);
+        return new \Application\Views\Maps\UpdateView(['map' => $map]);
+
     }
 
-    public function delete()
+    public function delete($id)
     {
-        if (!empty($_REQUEST['id'])) {
+        if (!empty($id)) {
             try {
-                $map = new Map($_REQUEST['id']);
+                $map = new Map($id);
                 $map->delete();
             }
             catch (\Exception $e) { $_SESSION['errorMessages'][] = $e; }
@@ -82,12 +82,12 @@ class MapsController extends Controller
     /**
      * URL to download the javascript file for a map
      */
-    public function download()
+    public function download(array $params)
     {
         header('Content-type: application/javascript; charset=utf-8');
-        if (!empty($_GET['id'])) {
+        if (!empty($params['id'])) {
             try {
-                $map = new Map($_GET['id']);
+                $map = new Map($params['id']);
                 header("Content-Disposition: attachment; filename={$map->getAlias()}.js");
                 readfile(APPLICATION_HOME."/public/js/maps/{$map->getInternalFilename()}.js");
                 exit();
