@@ -13,7 +13,7 @@ if (isset($_SESSION['USER'])) {
 
     echo "
         <button class=\"launcher\" id=\"userMenu\" aria-haspopup=\"true\" aria-expanded=\"false\">$name</button>
-        <div class=\"links\" aria-labeledby=\"userMenu\">
+        <div class=\"links\" aria-labeledby=\"userMenu\" hidden>
             <a href=\"$url\">{$this->_('logout')}</a>
         </div>
     ";

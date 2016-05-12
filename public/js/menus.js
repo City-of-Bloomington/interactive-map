@@ -2,10 +2,12 @@
 (function () {
     var closeMenus = function () {
         var openLaunchers = document.querySelectorAll('.dropdown [aria-expanded="true"]'),
+            openMenus     = document.querySelectorAll('.dropdown [aria-expanded="true"] + .links')
             len = openLaunchers.length,
             i   = 0;
         for (i=0; i<len; i++) {
             openLaunchers[i].setAttribute("aria-expanded", "false");
+            openMenus[i].setAttribute("hidden", "hidden");
         }
     },
     launcherClick = function(e) {
@@ -15,6 +17,7 @@
         launcher.blur();
         closeMenus();
         launcher.setAttribute("aria-expanded", "true");
+        menu.removeAttribute("hidden");
         e.stopPropagation();
         menu.focus();
     },

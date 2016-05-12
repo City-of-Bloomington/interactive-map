@@ -25,7 +25,7 @@ if ($links) {
     echo "
     <nav class=\"dropdown\">
         <button class=\"launcher\" id=\"adminMenu\"  aria-haspopup=\"true\" aria-expanded=\"false\">{$this->_('admin')}</button>
-        <div class=\"links\" aria-labeledby=\"adminMenu\">$links</div>
+        <div class=\"links\" aria-labeledby=\"adminMenu\" hidden>$links</div>
     </nav>
     ";
 }

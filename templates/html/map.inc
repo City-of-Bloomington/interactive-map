@@ -5,10 +5,10 @@
 <body>
 	<?php $this->_include('partials/header.inc'); ?>
 	<main>
-        <div class="panel1">
-<?= $this->includeBlocks('panel1'); ?>
+        <div class="panel1" id="panel1">
+            <?= $this->includeBlocks('panel1'); ?>
         </div>
-        <div class="resultsPanel" hidden>
+        <div class="panel2" id="panel2" hidden>
         </div>
         <?php
             include BLOSSOM.'/errorMessages.php';
