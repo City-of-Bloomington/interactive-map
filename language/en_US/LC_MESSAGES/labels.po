@@ -133,6 +133,9 @@ msgstr "Delete Map"
 msgid "script"
 msgstr "Script"
 
+msgid "description"
+msgstr "Description"
+
 msgid "navigationMarkdown"
 msgstr "Navigation Links"
 

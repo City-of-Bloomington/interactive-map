@@ -11,6 +11,7 @@ $related    = Markdown::defaultTransform($this->map->getRelatedMarkdown());
 $this->template->addToAsset('scripts', BASE_URI."/js/maps/{$this->map->getInternalFilename()}.js");
 ?>
 <div class="navigationMarkdown"><?= $navigation; ?></div>
+<p><?= parent::escape($this->map->getDescription()); ?></p>
 <div id="map"></div>
 <script type="text/javascript">
     // Transfer some constants from PHP to JavaScript.

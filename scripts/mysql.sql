@@ -12,10 +12,11 @@ create table people (
 );
 
 create table maps (
-    id    int unsigned not null primary key auto_increment,
-    name  varchar(128) not null unique,
-    alias varchar(128) not null unique,
-    internalFilename varchar(32) not null,
+    id               int unsigned not null primary key auto_increment,
+    name             varchar(128) not null unique,
+    alias            varchar(128) not null unique,
+    description      varchar(128),
+    internalFilename varchar(32)  not null,
     navigationMarkdown text,
     relatedMarkdown    text
 );

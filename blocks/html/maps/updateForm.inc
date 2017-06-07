@@ -6,7 +6,7 @@
  */
 $title = $this->map->getId() ? $this->_('map_edit') : $this->_('map_add');
 
-$fields = ['name', 'alias', 'navigationMarkdown', 'relatedMarkdown'];
+$fields = ['name', 'alias', 'description', 'navigationMarkdown', 'relatedMarkdown'];
 foreach ($fields as $f) {
     $get = 'get'.ucfirst($f);
     $$f = parent::escape($this->map->$get());
@@ -38,7 +38,7 @@ foreach ($fields as $f) {
                     'help'  => $downloadButton
                 ]);
 
-                foreach(['navigationMarkdown', 'relatedMarkdown'] as $f) {
+                foreach(['description', 'navigationMarkdown', 'relatedMarkdown'] as $f) {
                     echo $helper->field(['name'=>$f, 'id'=>$f, 'label'=>$this->_($f), 'type'=>'textarea', 'value'=>$$f]);
                 }
 
