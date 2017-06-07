@@ -1,23 +1,24 @@
 <?php
 /**
- * @copyright 2007-2015 City of Bloomington, Indiana
+ * @copyright 2007-2016 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
- * @param Zend\Db\Sql\Select $users
+ * @param array $this->users
  */
 use Application\Models\Person;
-use Blossom\Classes\View;
 ?>
 <section>
-	<h1><?= $this->_(['user','users',2]); ?></h1>
-	<div class="tools">
-	<?php
-        $helper = $this->template->getHelper('buttonLink');
-        if (Person::isAllowed('users')) {
-            echo $helper->buttonLink(self::generateUri('users.update'), $this->_('user_add'), 'add');
-        }
-	?>
-	</div>
+    <header>
+        <h1><?= $this->_(['user', 'users', count($this->users)]); ?></h1>
+        <div class="tools">
+        <?php
+            $helper = $this->template->getHelper('buttonLink');
+            if (Person::isAllowed('users')) {
+                echo $helper->buttonLink(self::generateUri('users.update'), $this->_('user_add'), 'add');
+            }
+        ?>
+        </div>
+    </header>
+
 	<table>
 		<thead>
 			<tr><th></th>
@@ -46,7 +47,7 @@ use Blossom\Classes\View;
 					);
 				}
 
-				$name = View::escape($user->getFullname());
+				$name = self::escape($user->getFullname());
 				echo "
 				<tr><td>$editButton</td>
 					<td>{$user->getUsername()}</td>

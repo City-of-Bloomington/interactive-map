@@ -12,7 +12,7 @@ class ListView extends Template
 {
     public function __construct(array $vars)
     {
-        parent::__construct('admin', 'html', $vars);
+        parent::__construct('default', 'html', $vars);
 
 		$this->blocks[] = new Block('users/list.inc',     ['users'     => $this->users]);
 		$this->blocks[] = new Block('pageNavigation.inc', ['paginator' => $this->users]);

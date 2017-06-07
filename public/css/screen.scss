@@ -1,11 +1,5 @@
-// Import Normalize first. It doesn't require any variables or mixins.
 @import 'sass-modules/_normalize';
-
-// Import the variables and mixins next. The other imports depend on this import.
-@import 'sass-modules/_vars-mixins';
-
 @import 'sass-modules/_layout';
-@import 'sass-modules/_html-elements';
 @import 'sass-modules/_header';
 @import 'sass-modules/_menu';
 @import 'sass-modules/_content-section';
@@ -13,23 +7,6 @@
 @import 'sass-modules/_buttons';
 @import 'sass-modules/_tables';
 
-/**
- * Side Panel
-+
- */
-
-.panel1 {
-    float: left;
-    width: 20%;
-}
-.panel2 {
-    @extend .panel1;
-    + .map {
-        margin-left: 40%;
-    }
-}
-.map {
-    height: 800px;
-    margin: 0 0 0 20%;
-    width: auto;
+#map {
+    width:100%; height: 800px;
 }

@@ -12,6 +12,6 @@ class IndexView extends Template
     public function __construct(array $vars=null)
     {
         $format = !empty($_REQUEST['format']) ? $_REQUEST['format'] : 'html';
-        parent::__construct('map', $format, $vars);
+        parent::__construct('default', $format, $vars);
     }
 }

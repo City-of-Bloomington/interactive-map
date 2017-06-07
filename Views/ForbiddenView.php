@@ -13,6 +13,6 @@ class ForbiddenView extends Template
     {
         header('HTTP/1.1 403 Forbidden', true, 403);
 
-        parent::__construct('admin', 'html', $vars);
+        parent::__construct('default', 'html', $vars);
     }
 }

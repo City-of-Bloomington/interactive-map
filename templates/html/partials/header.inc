@@ -1,8 +1,5 @@
-<?php
-use Blossom\Classes\View;
-?>
 <header>
-    <h1><a href="<?php echo BASE_URI; ?>"><?php echo View::escape(APPLICATION_NAME); ?></a></h1>
+    <h1><a href="<?php echo BASE_URI; ?>"><?php echo self::escape(APPLICATION_NAME); ?></a></h1>
     <div class="utilityBar">
     <?php
         $this->addToAsset('scripts', BASE_URI.'/js/menus.js');

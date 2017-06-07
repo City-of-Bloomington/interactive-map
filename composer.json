@@ -8,7 +8,9 @@
         "City-of-Bloomington/blossom-lib": "dev-viewmodel",
         "jasig/phpcas": "~1",
         "michelf/php-markdown": "~1",
-        "zendframework/zend-loader": "~2.5",
-        "zendframework/zend-permissions-acl": "~2.5"
+        "zendframework/zend-permissions-acl": "@stable"
+    },
+    "autoload": {
+        "psr-4": {"Application\\": ""}
     }
 }

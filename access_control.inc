@@ -1,8 +1,7 @@
 <?php
 /**
- * @copyright 2012-2014 City of Bloomington, Indiana
+ * @copyright 2015-2017 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
  */
 use Zend\Permissions\Acl\Acl;
 use Zend\Permissions\Acl\Role\GenericRole as Role;
@@ -37,8 +36,6 @@ $ZEND_ACL->allow(null,['js'],['map']);
 // Allow Staff to do stuff
 $ZEND_ACL->allow('Staff', ['people'], ['index','view']);
 $ZEND_ACL->allow('Staff', ['maps'],   ['index','view', 'update', 'download']);
-
-
 
 // Administrator is allowed access to everything
 $ZEND_ACL->allow('Administrator');

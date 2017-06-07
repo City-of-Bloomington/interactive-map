@@ -12,7 +12,7 @@ class UpdateView extends Template
 {
     public function __construct(array $vars)
     {
-        parent::__construct('admin', 'html', $vars);
+        parent::__construct('default', 'html', $vars);
 
         $this->blocks[] = new Block('users/updateForm.inc', ['user'   => $this->user]);
         if ($this->user->getId()) {

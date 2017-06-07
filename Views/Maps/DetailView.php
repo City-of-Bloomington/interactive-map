@@ -13,10 +13,10 @@ class DetailView extends Template
     public function __construct(array $vars)
     {
         $format = !empty($_REQUEST['format']) ? $_REQUEST['format'] : 'html';
-        parent::__construct('map', $format, $vars);
+        parent::__construct('default', $format, $vars);
 
-        $this->blocks['panel1'][] = new Block('maps/searchForm.inc');
-        $this->blocks['panel1'][] = new Block('maps/relatedLinks.inc', ['linksMarkdown' => $this->map->getRelatedMarkdown()]);
+        $this->blocks[] = new Block('maps/searchForm.inc');
+        $this->blocks[] = new Block('maps/relatedLinks.inc', ['linksMarkdown' => $this->map->getRelatedMarkdown()]);
         $this->blocks[] = new Block('maps/view.inc', ['map'=>$this->map]);
 
     }
