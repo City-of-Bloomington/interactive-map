@@ -1,14 +1,17 @@
 <?php
 /**
- * @copyright 2015 City of Bloomington, Indiana
+ * @copyright 2015-2017 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
- * @param string $this->map
+ * @param Map $this->map
  */
+use Michelf\Markdown;
+$navigation = Markdown::defaultTransform($this->map->getNavigationMarkdown());
+$related    = Markdown::defaultTransform($this->map->getRelatedMarkdown());
 
 $this->template->addToAsset('scripts', BASE_URI."/js/maps/{$this->map->getInternalFilename()}.js");
 ?>
-<div id="map" class="map"></div>
+<div class="navigationMarkdown"><?= $navigation; ?></div>
+<div id="map"></div>
 <script type="text/javascript">
     // Transfer some constants from PHP to JavaScript.
     // These should be set in the site config.
@@ -20,3 +23,4 @@ $this->template->addToAsset('scripts', BASE_URI."/js/maps/{$this->map->getIntern
         default_longitude: '<?= DEFAULT_LONGITUDE; ?>'
     };
 </script>
+<div class="relatedMarkdown"><?= $related; ?></div>
