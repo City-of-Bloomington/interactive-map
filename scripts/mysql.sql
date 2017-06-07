@@ -1,6 +1,5 @@
--- @copyright 2006-2012 City of Bloomington, Indiana
--- @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.txt
--- @author Cliff Ingham <inghamn@bloomington.in.gov>
+-- @copyright 2015-2017 City of Bloomington, Indiana
+-- @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
 create table people (
 	id int unsigned not null primary key auto_increment,
 	firstname varchar(128) not null,
@@ -18,6 +17,5 @@ create table maps (
     alias varchar(128) not null unique,
     internalFilename varchar(32) not null,
     navigationMarkdown text,
-    relatedMarkdown    text,
-    media_id int unsigned
+    relatedMarkdown    text
 );

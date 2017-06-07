@@ -1,12 +1,10 @@
 <?php
 /**
- * @copyright 2015 City of Bloomington, Indiana
+ * @copyright 2015-2017 City of Bloomington, Indiana
  * @license http://www.gnu.org/licenses/agpl.txt GNU/AGPL, see LICENSE.txt
- * @author Cliff Ingham <inghamn@bloomington.in.gov>
  * @param array $this->maps
  */
 use Application\Models\Person;
-use Blossom\Classes\View;
 ?>
 <section>
     <header>
@@ -30,7 +28,7 @@ use Blossom\Classes\View;
         foreach ($this->maps as $map) {
             $id    = $map->getId();
             $url   = self::generateUri('maps.view', ['id'=>$map->getAlias()]);
-            $name  = View::escape($map->getName());
+            $name  = parent::escape($map->getName());
 
             $editButton = $userCanEdit
                 ? $helper->buttonLink(self::generateUri('maps.update', ['id'=>$id]), $this->_('map_edit'), 'edit')
@@ -39,12 +37,8 @@ use Blossom\Classes\View;
                 ? $helper->buttonLink(self::generateUri('maps.delete', ['id'=>$id]), $this->_('map_delete'), 'delete')
                 : '';
 
-            $mediaUrl = $map->getMediaUrl();
-            $media = $mediaUrl ? "<img src=\"$mediaUrl\" />" : '';
-
             echo "
             <tr><td>$editButton</td>
-                <td>$media</td>
                 <td><a href=\"$url\">$name</a></td>
                 <td>$deleteButton</td>
             </tr>

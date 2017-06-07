@@ -30,15 +30,6 @@ define('MAPBOX_STYLE', 'mapbox.streets');
 define('GEOSERVER', 'https://localhost/geoserver');
 
 /**
- * Media Manager integration is optional.
- * If defined, you'll have access to a media_id field for the maps.
- *
- * @see https://github.com/City-of-Bloomington/media-manager
- */
-define('MEDIA_MANAGER', 'https://localhost/media');
-define('MEDIA_MANAGER_SIZE', 'Map Thumbnail');
-
-/**
  * Database Setup
  */
 $DATABASES = [
