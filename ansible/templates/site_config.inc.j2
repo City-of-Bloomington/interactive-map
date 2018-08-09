@@ -1,0 +1,91 @@
+<?php
+define('APPLICATION_NAME','maps');
+
+/**
+ * URL Generation settings
+ *
+ * Do NOT use trailing slashes
+ *
+ * If your site is being proxied, change BASE_HOST to the hostname
+ * used for the outside world.
+ */
+define('BASE_URI' , '{{ maps_base_uri }}');
+define('BASE_HOST', isset($_SERVER['HTTP_X_FORWARDED_HOST'])
+                        ? $_SERVER['HTTP_X_FORWARDED_HOST']
+                        : '{{ ansible_host }}');
+#define('BASE_HOST', $_SERVER['SERVER_NAME']);
+define('BASE_URL' , "https://".BASE_HOST.BASE_URI);
+
+/**
+ * Specify the theme directory
+ *
+  * Remember to create a symbolic link in public/css to the theme CSS
+  * that you declare here.
+ *
+ * A theme can consist of templates, blocks which will override core.
+ * The current theme's screen.css will be included in the HTML head.
+ */
+define('THEME', 'Kirkwood');
+
+/**
+ * Javascript APIs
+ */
+define('LEAFLET', BASE_URI.'/js/vendor/leaflet-0.7.5');
+
+define('MAPBOX_API_KEY', '{{ maps_mapbox.api_key }}');
+define('MAPBOX_STYLE', 'mapbox.streets');
+
+define('GEOSERVER', '{{ maps_geoserver_url }}');
+
+/**
+ * Database Setup
+ */
+$DATABASES = [
+    'default' => [
+        'dsn'      => 'mysql:dbname={{ maps_db.name }};host={{ maps_db.host }}',
+        'username' => '{{ maps_db.user }}',
+        'password' => '{{ maps_db.pass }}',
+        'options'  => []
+    ]
+];
+
+/**
+ * Directory Configuration
+ *
+ * This supports doing user authentication from multiple external
+ * directories, such as LDAP or ADS. This is required since city staff
+ * are in a seperate LDAP directory from public user accounts.
+ * Classes that implement ExternalIdentity should have an entry here.
+ *
+ * See: ExternalIdentity
+ */
+// Example for ADS style authentication
+$DIRECTORY_CONFIG = [
+  'Employee' => [
+      'classname' => 'Site\Classes\Employee',
+      'DIRECTORY_SERVER' => '{{ maps_directory_service }}',
+  ]
+];
+
+/**
+ * CAS authentication http://www.jasig.org/cas
+ *
+ * https://wiki.jasig.org/display/CASC/phpCAS
+ *
+ * phpCAS is a PHP library for handling the calls to the CAS service
+ * It is the official library, part of the Jasig CAS project
+ */
+define('CAS', APPLICATION_HOME.'/vendor/jasig/phpcas/source');
+define('CAS_SERVER','{{ maps_cas_host }}');
+define('CAS_URI','cas');
+
+define('DATE_FORMAT', 'n/j/Y H:i:s');
+define('LOCALE', 'en_US');
+
+/**
+ * Default coordinates for map center
+ * This should probably be the center of your city
+ * If you can, it's best to adjust these values in your php.ini
+ */
+define('DEFAULT_LATITUDE', ini_get('date.default_latitude'));
+define('DEFAULT_LONGITUDE',ini_get('date.default_longitude'));

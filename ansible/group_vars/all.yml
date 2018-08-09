@@ -1,0 +1,22 @@
+---
+maps_archive_path: "../build/maps.tar.gz"
+maps_install_path: "/srv/sites/maps"
+maps_backup_path:  "/srv/backups/maps"
+maps_site_home:    "{{ maps_install_path }}/data"
+
+maps_base_uri: "/maps"
+maps_base_url: "https://{{ ansible_host }}{{ maps_base_uri }}"
+
+maps_db:
+  host: "localhost"
+  name: "maps"
+  user: "maps"
+  pass: "{{ vault_maps_db.password }}"
+
+maps_mapbox:
+  api_key: ""
+
+maps_geoserver_url: ""
+maps_directory_service: ""
+maps_cas_host: ""
+...

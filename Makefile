@@ -1,4 +1,4 @@
-APPNAME=interactive-map
+APPNAME=maps
 
 SASS := $(shell command -v pysassc 2> /dev/null)
 MSGFMT := $(shell command -v msgfmt 2> /dev/null)

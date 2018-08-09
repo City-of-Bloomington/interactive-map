@@ -7,3 +7,5 @@ screen.css
 screen.css.map
 .sass-cache
 vendor
+*.retry
+ansible/roles/*
