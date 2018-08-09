@@ -1,31 +1,31 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fca3638a9cc853e2d003e15117975176",
+    "content-hash": "9619eabd3a2edbcac4ef171a3344c697",
     "packages": [
         {
             "name": "City-of-Bloomington/factory-number-one",
-            "version": "dev-refactor",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/City-of-Bloomington/factory-number-one.git",
-                "reference": "cfa0d52f9f87286d9120230cc26d4265ef6c0e6e"
+                "reference": "4970f905becd4841554291fbaba5a64fcc5fbc2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/City-of-Bloomington/factory-number-one/zipball/cfa0d52f9f87286d9120230cc26d4265ef6c0e6e",
-                "reference": "cfa0d52f9f87286d9120230cc26d4265ef6c0e6e",
+                "url": "https://api.github.com/repos/City-of-Bloomington/factory-number-one/zipball/4970f905becd4841554291fbaba5a64fcc5fbc2c",
+                "reference": "4970f905becd4841554291fbaba5a64fcc5fbc2c",
                 "shasum": ""
             },
             "type": "library",
             "support": {
-                "source": "https://github.com/City-of-Bloomington/factory-number-one/tree/refactor",
+                "source": "https://github.com/City-of-Bloomington/factory-number-one/tree/master",
                 "issues": "https://github.com/City-of-Bloomington/factory-number-one/issues"
             },
-            "time": "2017-06-07 17:53:05"
+            "time": "2018-03-29T18:46:24+00:00"
         }
     ],
     "packages-dev": [],
@@ -37,7 +37,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=7.2"
     },
     "platform-dev": []
 }
