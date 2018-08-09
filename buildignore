@@ -1,15 +1,7 @@
-/buildignore
-/build.sh
-/build
-/dist
+buildignore
+build
 .git/
 .git*
-configuration.inc
 site_config.inc
 /data/maps/*
 /data/sessions/*
-/scripts/backup.cnf
-.gulp-build
-.ftppass
-gulpfile.js
-node_modules

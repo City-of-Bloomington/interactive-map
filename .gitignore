@@ -2,12 +2,8 @@ site_config.inc
 data/maps/*
 data/sessions/*
 build
-dist
 *.mo
 screen.css
 screen.css.map
 .sass-cache
-node_modules
-package.json
-.ftppass
 vendor
